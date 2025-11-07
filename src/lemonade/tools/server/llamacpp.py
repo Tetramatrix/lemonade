@@ -165,16 +165,17 @@ class LlamaServer(WrappedServer):
         if supports_embeddings and ctx_size < EMBEDDING_CTX_SIZE:
             ctx_size = EMBEDDING_CTX_SIZE
 
+        threads = 12  # optional CPU threads
 
         # Build the base command
         base_command = [
-            exe_path,
-            "-m",
-            snapshot_files["variant"],
-            "--ctx-size",
-            str(ctx_size),
-            "--flash-attn", 
-            "on"
+            exe_path,                            # path to llama-server executable
+            "-m", snapshot_files["variant"],     # path to the GGUF model file
+            "--ctx-size", str(ctx_size),         # context window size
+            "--flash-attn", "on",                # enable flash attention for GPU speed
+        #    "--kv-cache", "on",                  # enable key-value caching for faster token generation
+        #    "--prompt-cache", "on",              # enable prompt cache for repeated prompts
+            "--threads", str(threads)            # number of CPU threads
         ]
 
         # Lock random seed for deterministic behavior in CI
