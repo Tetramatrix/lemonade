@@ -165,6 +165,7 @@ class LlamaServer(WrappedServer):
         if supports_embeddings and ctx_size < EMBEDDING_CTX_SIZE:
             ctx_size = EMBEDDING_CTX_SIZE
 
+
         # Build the base command
         base_command = [
             exe_path,
@@ -172,6 +173,8 @@ class LlamaServer(WrappedServer):
             snapshot_files["variant"],
             "--ctx-size",
             str(ctx_size),
+            "--flash-attn", 
+            "on"
         ]
 
         # Lock random seed for deterministic behavior in CI
