@@ -460,7 +460,8 @@ void LlamaCppServer::load(const std::string& model_name,
         "-m", gguf_path,
         "--ctx-size", std::to_string(ctx_size),
         "--port", std::to_string(port_),
-        "--jinja"  // Enable tool use
+        "--flash-attn", "on", // Enable flash attention
+        "--jinja",  // Enable tool use
     };
     
     // Add mmproj file if present (for vision models)
