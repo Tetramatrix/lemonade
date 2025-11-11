@@ -21,7 +21,7 @@ OutFile "Lemonade_Server_Installer_beta.exe"
 
 ; Define constants
 !define PRODUCT_NAME "Lemonade Server Beta"
-!define PRODUCT_VERSION "9.0.0"
+!define PRODUCT_VERSION "9.0.1"
 !define PRODUCT_PUBLISHER "AMD"
 !define PRODUCT_WEB_SITE "https://lemonade-server.ai"
 !define UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
